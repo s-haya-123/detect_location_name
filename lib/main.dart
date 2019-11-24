@@ -54,6 +54,14 @@ class _MyHomePageState extends StatelessWidget {
       child:  !isStartCamera(model)
           ? Container(
         color: Colors.blue,
+        child: Center(child: Text('仙峰寺',
+          style: TextStyle(
+              color: Colors.white,
+            fontWeight: FontWeight.w500,
+            fontSize: 60,
+            fontFamily: 'aoyagi'
+          )
+        ),),
       )
           : _takedPictureWidget(model),
     );

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:camera/camera.dart';
 import 'package:detect_location_name/CameraModel.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +73,14 @@ class _MyHomePageState extends StatelessWidget {
       child:
       RaisedButton(
         color: Colors.green,
-        onPressed: () {
+        onPressed: () async {
+          final audio = AssetsAudioPlayer();
+          await audio.open(AssetsAudio(
+            asset: "drum-japanese2.mp3",
+            folder: "audio/",
+          ));
+          await audio.play();
+          print(audio.finished);
           model.startCameraPreview();
         },
         child: Text(

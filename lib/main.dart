@@ -44,15 +44,15 @@ class _MyHomePageState extends StatelessWidget {
             children: <Widget>[
               _thumbnailWidget(model),
               _cameraWidget(model),
-              _regionName(),
+              _regionName(model),
             ],
           ),
         );
       },
     );
   }
-  Widget _regionName() {
-    return Stack(children: [
+  Widget _regionName(CameraModel model) {
+    return model.isShowRegion ? Stack(children: [
       Center(child:
           Image.asset('images/title.png',
               height: 100,
@@ -71,7 +71,7 @@ class _MyHomePageState extends StatelessWidget {
               )
           ),
       )
-    ]);
+    ]): Stack(children: [],);
   }
   Widget _thumbnailWidget(CameraModel model) {
     return Positioned.fill(
@@ -97,6 +97,7 @@ class _MyHomePageState extends StatelessWidget {
           await audio.play();
           print(audio.finished);
           model.startCameraPreview();
+          model.showRegion();
         },
         child: Text(
           "START",

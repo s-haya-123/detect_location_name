@@ -3,6 +3,7 @@ import 'package:detect_location_name/Location.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CameraModel extends Model {
+  bool isShowRegion = false;
   CameraController controller;
   CameraDescription cameras;
   CameraModel(this.cameras){
@@ -22,6 +23,10 @@ class CameraModel extends Model {
     } on CameraException catch (e) {
     }
     Location().detectLocale(34.50165844222924, 133.3843445777893);
+    notifyListeners();
+  }
+  void showRegion() {
+    this.isShowRegion = true;
     notifyListeners();
   }
 

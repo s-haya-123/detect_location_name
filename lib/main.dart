@@ -62,11 +62,11 @@ class _MyHomePageState extends StatelessWidget {
       Center(
         child:
           Text(
-              '仙峰寺',
+              model.title,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
-                fontSize: 60,
+                fontSize: 54,
                 fontFamily: 'aoyagi'
               )
           ),
@@ -89,15 +89,7 @@ class _MyHomePageState extends StatelessWidget {
       RaisedButton(
         color: Colors.green,
         onPressed: () async {
-          final audio = AssetsAudioPlayer();
-          await audio.open(AssetsAudio(
-            asset: "drum-japanese2.mp3",
-            folder: "audio/",
-          ));
-          await audio.play();
-          print(audio.finished);
           model.startCameraPreview();
-          model.showRegion();
         },
         child: Text(
           "START",

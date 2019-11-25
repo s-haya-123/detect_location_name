@@ -25,10 +25,16 @@ class LocationEntity {
     prefecture = json.containsKey('prefecture') ? LocationStructure(json['prefecture']['pcode'],json['prefecture']['pname']):null;
     municipality = json.containsKey('municipality') ? LocationStructure(json['municipality']['mcode'],json['municipality']['mname']):null;
   }
+  String toString() {
+    return '${prefecture.toString()}__${municipality.toString()}';
+  }
 }
 
 class LocationStructure {
   int code;
   String name;
   LocationStructure(this.code, this.name){}
+  String toString() {
+    return '${code}_${name}';
+  }
 }

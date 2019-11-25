@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:camera/camera.dart';
 import 'package:detect_location_name/Location.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -27,6 +29,10 @@ class CameraModel extends Model {
   }
   void showRegion() {
     this.isShowRegion = true;
+    Timer.periodic(Duration(seconds:5), (Timer t) {
+      this.isShowRegion = false;
+      notifyListeners();
+    });
     notifyListeners();
   }
 

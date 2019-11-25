@@ -40,29 +40,44 @@ class _MyHomePageState extends StatelessWidget {
       builder: (context, child, model) {
         return Scaffold(
           key: _scaffoldKey,
-          body: new Stack(
+          body: Stack(
             children: <Widget>[
               _thumbnailWidget(model),
               _cameraWidget(model),
+              _regionName(),
             ],
           ),
         );
       },
     );
   }
+  Widget _regionName() {
+    return Stack(children: [
+      Center(child:
+          Image.asset('images/title.png',
+              height: 100,
+              width: 380,
+              fit:BoxFit.fill,),
+        ),
+      Center(
+        child:
+          Text(
+              '仙峰寺',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 60,
+                fontFamily: 'aoyagi'
+              )
+          ),
+      )
+    ]);
+  }
   Widget _thumbnailWidget(CameraModel model) {
-    return new Positioned.fill(
+    return Positioned.fill(
       child:  !isStartCamera(model)
           ? Container(
         color: Colors.blue,
-        child: Center(child: Text('仙峰寺',
-          style: TextStyle(
-              color: Colors.white,
-            fontWeight: FontWeight.w500,
-            fontSize: 60,
-            fontFamily: 'aoyagi'
-          )
-        ),),
       )
           : _takedPictureWidget(model),
     );
